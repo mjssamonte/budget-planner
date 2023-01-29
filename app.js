@@ -12,10 +12,20 @@ const clear = () => {
   inputAmount.value = "";
 };
 
-btnAdd.addEventListener("click", () => {
+const showAlert = async () => {
+  const alert = document.createElement("ion-alert");
+  alert.header = "Invalid Inputs";
+  alert.message = "Please enter a valid expense reason and amount.";
+  alert.buttons = ["Ok"];
+  document.body.appendChild(alert);
+  await alert.present();
+};
+
+btnAdd.addEventListener("click", async () => {
   const reason = inputReason.value;
   const amount = inputAmount.value;
   if (reason.trim().length === 0 || amount <= 0 || amount.trim().length === 0) {
+    await showAlert();
     return;
   }
   let newItem = document.createElement("ion-item");
