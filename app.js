@@ -4,6 +4,11 @@ const btnClear = document.querySelector("#btn-clear");
 const btnAdd = document.querySelector("#btn-add");
 const expenseList = document.querySelector("#expense-list");
 
+const clear = () => {
+  inputReason.value = "";
+  inputAmount.value = "";
+};
+
 btnAdd.addEventListener("click", () => {
   const reason = inputReason.value;
   const amount = inputAmount.value;
@@ -13,4 +18,7 @@ btnAdd.addEventListener("click", () => {
   let newItem = document.createElement("ion-item");
   newItem.textContent = reason + ": ₱" + amount;
   expenseList.appendChild(newItem);
+  clear();
 });
+
+btnClear.addEventListener("click", clear);
