@@ -2,6 +2,7 @@ const inputReason = document.querySelector("#input-reason");
 const inputAmount = document.querySelector("#input-amount");
 const btnClear = document.querySelector("#btn-clear");
 const btnAdd = document.querySelector("#btn-add");
+const expenseList = document.querySelector("#expense-list");
 
 btnAdd.addEventListener("click", () => {
   const reason = inputReason.value;
@@ -9,5 +10,7 @@ btnAdd.addEventListener("click", () => {
   if (reason.trim().length === 0 || amount <= 0 || amount.trim().length === 0) {
     return;
   }
-  console.log(reason, amount);
+  let newItem = document.createElement("ion-item");
+  newItem.textContent = reason + ": ₱" + amount;
+  expenseList.appendChild(newItem);
 });
